@@ -1,0 +1,542 @@
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Nanum Gothic", sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.divLogo{
+margin-left: 40px;
+}
+.logo{
+        width:  100px;
+        height:100px;
+       
+
+}
+
+
+.container{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    width: 100%;
+    height: 835px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    background-image:url("./images/gastro-editorial-S7Cq9Gt_QtI-unsplash.jpg");
+    background-repeat: no-repeat;
+    background-size: cover; 
+    z-index: 1;
+    margin-bottom: 100px;
+}
+.icon{
+    width: 40px;
+    height: 40px; 
+color: #ddd;
+}
+ .nav{
+position: fixed;
+display: flex;
+justify-content: space-between;
+align-items: center;
+    top: 0;
+    width: 100%;
+    height: 100px;
+  
+    color: #212020;
+    background-color:white;
+    /* backdrop-filter: blur(8px); */
+    box-shadow: 0 1px 1px 0 rgba(184, 183, 183, 0.664); 
+            transition: all 0.3s ease; 
+            z-index: 10;
+}
+
+
+.Spaces{
+display: flex;
+justify-content: center;
+align-items: center;
+margin-right: 20px;
+}
+.space{
+    padding: 10px;
+    margin: 10px;
+    transform: 1s all;
+    border-radius: 10px;
+    color: #05032d;
+    font-size: 19px;
+
+}
+.space:hover{
+color: #d71e1e;
+cursor: pointer;
+    /* border-bottom: 2px solid rgb(237, 233, 233); */
+}
+.inicio{
+    padding: 10px;
+    margin: 20px;
+
+  
+border-radius: 10px;
+background-color: #d61212;
+color: #211f1f;
+box-shadow: 0 4px 15px rgba(37, 37, 37, 0.298); 
+transition: all 0.3s ease; 
+}
+
+
+
+.inicio:hover{
+    background-color: #827c7c6d; 
+    cursor: pointer;
+}
+
+.cerrar{
+    padding: 10px;
+    margin: 20px;
+
+  
+border-radius: 10px;
+background-color: #d61212;
+color: #211f1f;
+box-shadow: 0 4px 15px rgba(37, 37, 37, 0.298); 
+transition: all 0.3s ease; 
+}
+.cerrar:hover{
+    background-color: #827c7c6d; 
+    cursor: pointer;
+}
+
+.boton-carrito{
+    padding: 10px;
+    margin: 20px;
+    
+border-radius: 10px;
+background-color: #d61212;
+color: #211f1f;
+box-shadow: 0 4px 15px rgba(37, 37, 37, 0.298); 
+transition: all 0.3s ease; 
+}
+
+
+.comer {
+    position: absolute;
+    padding: 20px 40px;
+    margin: 20px;
+    border-radius: 10px;
+    background-color: #d61212;
+    border: none;
+    color: #ffff;
+    z-index: 1;
+    bottom: 20%;
+    left: 16%;
+    transition: all 0.3s ease; 
+}
+.comer:hover {
+    background-color: #ffffff; 
+    color: #000000;
+    cursor: pointer;
+} 
+.menu{
+    text-align: center;
+}
+.platillos{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    justify-content: center;
+    justify-items: center;
+ width: 1100px;
+ margin-top: 50px;
+ margin-bottom: 50px;
+}
+
+
+
+
+.platillo{
+    position: relative;
+display: grid;
+grid-template-columns: 55% 45%;
+width: 500px;
+height: 200px;
+/* box-shadow: 0 2px 4px 0 rgb(75, 73, 73); */
+border: 1px solid rgb(200, 197, 197);
+border-radius: 10px;
+}
+.item-descripcion{
+    height: 100%;
+    left: 0;
+    border: 1px solid black;
+}
+
+.imagen{
+height: 100%;
+right: 0;
+
+}
+.imagen img{
+   width: 100%;
+   height: 100%;
+   border-radius: 0 10px 10px 0;
+    }
+    .nombre,.descripcion,.precio{
+        padding: 10px;
+    }
+    .agregar{
+width: 100%;
+background-color: #000000;
+color: #f9f2f2;
+border-radius: 0 0 0 10px;
+height: 27px;
+    } 
+
+
+             .add-icon {
+                position: absolute;
+                right: 5px;
+                bottom: 5px;
+                display: inline-flex;
+                justify-content: center; 
+                align-items: center;
+                width: 40px;
+                height: 40px;
+                background-color: white;
+                border-radius: 10px;
+                font-size: 24px;
+                color: #333;
+                cursor: pointer;
+                transition: background-color 0.3s; 
+            }
+        
+            .add-icon:hover {
+                background-color: #191717; 
+                color: #f2e4e4;
+             
+            }
+footer{
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+width: 100%;
+background-color: #05032d;
+}    
+.al{
+display: flex;
+justify-content: center;
+margin: 20px;
+color: #ddd;
+}   
+a{
+color: #fbf5f5;
+text-decoration: none;
+}
+a:hover{
+    text-decoration:underline;
+    }
+
+    .linea{
+      
+        width: 90%;
+border-bottom: 1px solid rgb(214, 210, 210);
+    }
+         
+    
+    .carrito{
+        position: fixed;
+      
+        width:450px ;
+        height: 90%;
+        right: 0;
+        background-color: #ffff;
+        z-index: 100;
+     display: none;
+    }
+
+    .carrito-Button{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .items-carrito{
+       padding-top: 10px;
+      padding-left: 25px;
+        width:100%;
+        height:80%;
+overflow:auto;
+    }
+
+    
+    .item-carrito{
+       display: grid;
+       grid-template-columns: 55% 25% 20%;
+       align-items: center;
+       gap: 5px;
+      border-radius: 10px;
+        width:400px;
+      padding: 10px;
+box-shadow: 0 2px 4px 0 rgb(68, 67, 67);
+    }
+
+    
+    h1{
+        margin-top: 50px;
+        text-align: center;
+    border-bottom: 1px solid black;
+    }
+
+    .incrementar{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+margin-left: 10px;
+    }
+    .icon{
+        width: 25px;
+        height: 25px;
+    }
+    .close{
+        position: absolute;
+        top: 10px;
+        right:10px;
+    }
+
+    .descripcion-item{
+        display: flex;
+     
+    }
+
+    .precio {
+        display: flex;
+       align-items: center;
+       justify-content: center;
+        white-space: nowrap;
+    }
+    .total{
+            width:100%;
+            height: 10%;
+        text-align: center;
+        font-size: 25px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    .pagar{
+width: 100%;
+padding: 20px;
+background-color: #000000;
+color: #ddd;
+margin-top: 10px;
+border: none;
+font-size: 20px;
+cursor: pointer;
+    }
+
+
+    
+    .localizacion {
+        text-align: center;
+
+        background-color: #f8f8f8;
+        margin-top: 50px;
+    }
+    
+    .localizacion h2 {
+        font-size: 2rem;
+        color: #333;
+        margin-bottom: 20px;
+    }
+    
+    .localizacion p {
+        font-size: 1.2rem;
+        color: #666;
+        margin-bottom: 20px;
+    }
+    
+    .mapa {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .mapa iframe {
+        border: 2px solid #ccc;
+        border-radius: 8px;
+    }
+.trash-item{
+    display: flex;
+    justify-content: center;
+}
+
+
+.galeria {
+    padding: 40px;
+    /* background-color: #ffff; */
+    text-align: center;
+}
+
+.galeria h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.galeria-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+}
+
+.galeria-item {
+    position: relative;
+    overflow: hidden;
+   
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.galeria-item img {
+    width: 100%;
+    height: 400px;
+    transition: transform 0.3s ease;
+}
+
+.galeria-item:hover img {
+    transform: scale(1.1);
+}
+
+/* Opcional: efecto de sombra al hacer hover */
+.galeria-item:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.socialMedia{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    margin: 20px;
+}
+
+
+.apartado-reservacion{
+position: relative;
+
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    width: 98%;
+    height: 500px;
+    background-image:linear-gradient(to top,rgba(30,35,38,.8),rgba(30,35,38,.1)),url('images/nick-karvounis-Ciqxn7FE4vE-unsplash.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 60px;
+    margin-bottom: 100px;
+
+}
+
+.horario{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+    height: 300px;
+}
+p{
+    font-family: "Nanum Gothic", sans-serif;
+    margin: 20px;
+    color: white;
+    font-weight: bold;
+}
+.button-reservacion{
+    position: absolute;
+    
+    padding: 20px 40px;
+    background-color: #d61212;
+    border: none;
+    color: #ffff;
+    bottom: 15%;
+    transition: all 0.3s ease;   
+    cursor: pointer;
+    outline: none;
+    display: inline-block;
+    text-decoration: none;
+}
+.button-reservacion:hover{
+    text-decoration: none;
+    background-color: white;
+    color: #000000;
+}
+.contenido-1{
+   
+    margin: 40px;
+    color: black;
+    font-weight: bold;
+    font-size: 40px;
+}
+.contenido-2{
+
+    margin-bottom: 80px;
+    color: rgb(122, 115, 115);
+    font-weight: bold;
+}
+
+.t-menu{
+
+    margin-bottom: 20px;
+    color: rgb(25, 23, 23);
+    font-size: 30px;
+    font-weight: bold;
+    padding: 10px;
+    border-top: 1px solid burlywood;  
+    border-bottom: 1px solid burlywood;  
+}
+
+
+
+
+
+
+
+.popup {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.9);
+    display: none; /* Ocultar el popup por defecto */
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.popup img {
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.close-popup {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+
+
+
+
+

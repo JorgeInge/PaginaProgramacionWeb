@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión</title>
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Raleway:400,100,200,300);
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            color: #666;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #4FDA8C;
+        }
+
+        input {
+            font: 16px/26px "Raleway", sans-serif;
+        }
+
+        body {
+            color: #666;
+            background-color: #f1f2f2;
+            font: 16px/26px "Raleway", sans-serif;
+background-image: linear-gradient(to top, rgba(30, 35, 38, 0.8), rgba(30, 35, 38, 0.1)), url('https://static.vecteezy.com/system/resources/thumbnails/006/999/783/small/wave-style-japanese-pattern-background-free-vector.jpg');
+background-size: cover;
+background-position: center;
+height: 100vh;
+width: 100%;
+
+        }
+
+        .form-wrap {
+            background-color: #fff;
+            width: 320px;
+            margin: 3em auto;
+            box-shadow: 0px 1px 8px #BEBEBE;
+        }
+
+        .form-wrap .tabs {
+            overflow: hidden;
+        }
+
+        .form-wrap .tabs h3 {
+            float: left;
+            width: 50%;
+        }
+
+        .form-wrap .tabs h3 a {
+            padding: 0.5em 0;
+            text-align: center;
+            font-weight: 400;
+            background-color: #e6e7e8;
+            display: block;
+            color: #666;
+        }
+
+        .form-wrap .tabs h3 a.active {
+            background-color: #fff;
+        }
+
+        .form-wrap .tabs-content {
+            padding: 1.5em;
+        }
+
+        .form-wrap .tabs-content div[id$="tab-content"] {
+            display: none;
+        }
+
+        .form-wrap .tabs-content .active {
+            display: block !important;
+        }
+
+        .form-wrap form .input {
+            box-sizing: border-box;
+            color: inherit;
+            padding: 0.8em 0 10px 0.8em;
+            border: 1px solid #CFCFCF;
+            margin-bottom: 0.8em;
+            width: 100%;
+        }
+
+        .form-wrap form .buttonsignup {
+            width: 100%;
+            padding: 0.8em 0;
+            background-color: #28A55F;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .form-wrap form .buttonsignup:hover {
+            background-color: #4FDA8C;
+        }
+
+        .form-wrap form .buttonlogin {
+            width: 100%;
+            padding: 0.8em 0;
+            background-color: #28A55F;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .form-wrap form .buttonlogin:hover {
+            background-color: #4FDA8C;
+        }
+
+        .form-wrap form .checkbox {
+            visibility: hidden;
+            margin: 0.5em 0 1.5em;
+        }
+
+        .form-wrap form label[for] {
+            position: relative;
+            padding-left: 20px;
+            cursor: pointer;
+        }
+
+        .form-wrap form label[for]:before {
+            content: '';
+            position: absolute;
+            border: 1px solid #CFCFCF;
+            width: 17px;
+            height: 17px;
+            top: 0px;
+            left: -14px;
+        }
+
+        .form-wrap .help-text {
+            margin-top: 0.6em;
+        }
+
+        .form-wrap .help-text p {
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .error-message{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-wrap">
+        <div class="tabs">
+            <h3 class="signup-tab"><a class="active" href="#signup-tab-content">Sign Up</a></h3>
+            <h3 class="login-tab"><a href="#login-tab-content">Login</a></h3>
+        </div>
+
+        <div class="tabs-content">
+            <!-- Sign Up Form -->
+            <div id="signup-tab-content" class="active">
+                <form class="signup-form" action="/createUser" method="post">
+                    <input type="email" class="input" id="user_email" autocomplete="off" placeholder="Email" required>
+                    <input type="text" class="input" id="user_name" autocomplete="off" placeholder="Username" required>
+                    <input type="password" class="input" id="signup_user_pass" autocomplete="off" placeholder="Password" required>
+                    <input type="submit" class="buttonsignup" value="Sign Up">
+                    
+                   
+                </form>
+                <div class="help-text">
+                    <p>By signing up, you agree to our</p>
+                    <p><a href="#">Terms of service</a></p>
+                </div>
+            </div>
+
+            <!-- Login Form -->
+            <div id="login-tab-content">
+                <form class="login-form" action="/login" method="post">
+                    <input type="text" class="input" id="user_login" autocomplete="off" placeholder="Email or Username" required>
+                    <input type="password" class="input" id="user_pass" autocomplete="off" placeholder="Password" required>
+                    <input type="checkbox" class="checkbox" id="remember_me">
+                    <label for="remember_me">Remember me</label>
+                    <input type="submit" class="buttonlogin" value="Login">
+                    <div class="error-message"></div>
+                </form>
+                <div class="help-text">
+                    <p><a href="#">Forgot your password?</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+       
+        const tabs = document.querySelectorAll('.tabs h3 a');
+        const tabContents = document.querySelectorAll('.tabs-content > div');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', (event) => {
+                event.preventDefault();
+             
+                tabs.forEach(item => item.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+
+                tab.classList.add('active');
+                const contentId = tab.getAttribute('href');
+                document.querySelector(contentId).classList.add('active');
+                
+            });
+        });
+
+
+    var button =document.querySelector(".buttonlogin")
+    var message =document.querySelector(".error-message")
+
+//el codigo siguiente hace el proceso de login 
+    button.addEventListener('click', (e) => {
+        e.preventDefault()
+   
+ //aqui se obtienen el correo y password del usurio       
+    var correo =document.querySelector("#user_login")
+    var pass =document.querySelector("#user_pass")
+
+    //validacion si los campos no son vacios
+if(correo.value==="" && pass.value===""){
+
+    message.innerHTML= 'esta incorrectos los datos';
+}else{
+    //si si tienen contenido ,hacemos un fetch mandando a llamar el endpoint /login
+    message.innerHTML= '';
+    fetch('/login', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    //aqui mandamos el email y la contrasena en el body de la peticion ala ruta antes indicada
+    body: JSON.stringify({ email: correo.value, password: pass.value })
+})
+.then(response => response.json())
+.then(data => {
+    if (data.redirect) {
+        window.location.href = data.redirect; // Redirige al usuario
+      let token = obtenerCookie("access_token");//obtenemos la cookie que se genera en el backend
+if (token) {
+    //si hay un token usamos esta funcion para extraer la info del usuario logueado
+     datosUsuario = decodificarJWT(token);
+
+     //la ponemos en una variable  localStorage para usarla en otras vistas
+     localStorage.setItem('datosUsuario', JSON.stringify(datosUsuario.user));
+}
+} else {
+    //mandamos el mensaje de la respuesta del endpoint al front
+        message.innerHTML= data.message;
+    }
+})
+.catch(error => console.error('Error en la solicitud:', error));
+}
+
+       
+});
+
+
+
+
+var buttonsignup =document.querySelector(".buttonsignup")
+//el codigo siguiente hace el proceso de inicio de sesion
+buttonsignup.addEventListener('click', (e) => {
+        e.preventDefault()
+   
+ //aqui se obtienen el correo y password del usurio       
+    var correo =document.querySelector("#user_email")
+    var pass =document.querySelector("#signup_user_pass")
+    var name  =document.querySelector("#user_name")
+
+    //validacion si los campos no son vacios
+if(correo.value==="" && pass.value==="" && name.value===""){
+
+    alert('esta incorrectos los datos')
+}else{
+    //si si tienen contenido ,hacemos un fetch mandando a llamar el endpoint /login
+    messageSing.innerHTML= '';
+    fetch('/createUser', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    //aqui mandamos el email y la contrasena en el body de la peticion ala ruta antes indicada
+    body: JSON.stringify(
+        { 
+        email: correo.value,
+        nombre:name.value,
+        pass: pass.value })
+})
+.then(response => response.json())
+.then(data => {
+    alert(data.message)
+    
+})
+.catch(error => console.error('Error en la solicitud:', error));
+}     
+});
+
+
+async function emailValidation(){
+    
+}
+
+
+
+
+
+
+        // Función para obtener una cookie por su nombre
+        function obtenerCookie(nombre) {
+    let nombreCookie = nombre + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let listaCookies = decodedCookie.split(';');
+    for (let i = 0; i < listaCookies.length; i++) {
+        let c = listaCookies[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(nombreCookie) == 0) {  // Si la cookie comienza con el nombre
+            return c.substring(nombreCookie.length, c.length);  // Devuelve el valor de la cookie
+        }
+    }
+    return "";  // Si no encuentra la cookie, devuelve una cadena vacía
+}
+
+
+// Función para obtener el token de JWT este se encuentra en la cookie
+function decodificarJWT(token) {
+    let partes = token.split('.');
+    
+    if (partes.length === 3) {
+        let payload = partes[1];
+        
+        while (payload.length % 4 !== 0) {
+            payload += '=';
+        }
+        let decodedPayload = atob(payload); 
+        let jsonPayload = JSON.parse(decodedPayload);
+        
+        return jsonPayload;
+    }
+    return null;
+}
+
+
+
+
+
+    </script>
+</body>
+</html>
+
+
+
+

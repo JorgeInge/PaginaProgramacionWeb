@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Comida</title>
+
+    <link rel="stylesheet" href="styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Prociono&display=swap" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+   
+   
+</head>
+<body>  
+    <div class="container">
+        <div class="nav">
+    <div class="divLogo">
+       <img class="logo" src="images/logo.jpg" alt="">
+    </div>
+            <div class="Spaces">
+                <div class="space">Inicio</div>
+                <div class="space">Nosotros</div>
+                <div><a class="space" href="./reservacion.html">Reservacion</a></div>
+                <!-- <div class="space">Galeria</div> -->
+                <div><a class="space" href="./contactanos.html">Contacto</a></div>
+                <div><a class="space" href="./usuario.html">Pedidos</a></div>
+            </div>
+
+            <div class="Spaces">
+            <div class="cerrar">cerrar sesion</div>
+            <div class="inicio"><a class="space" href="./inicioSesion.html">Iniciar Sesion</a></div>
+            <div class="boton-carrito">carrito</div>    
+        </div>
+        </div>
+       
+        <button class="comer">ORDENE AHORA</button>
+       
+    </div> 
+
+
+    
+<!-- Sección de Galería -->
+<div class="galeria">
+    <h2>Nuestra Galería</h2>
+
+    <div class="galeria-grid">
+        <div class="galeria-item">
+            <img src="images/zyanya-citlalli-QPMHUBji1LM-unsplash.jpg" alt="Plato 1">
+        </div>
+        <div class="galeria-item">     
+            <img src="images/bruce-tang-rO2CEMO056c-unsplash.jpg" alt="Plato 2">
+        </div>
+        <div class="galeria-item">
+            <img src="images/muhammad-fawdy-3CymerSe7bE-unsplash.jpg" alt="Plato 3">
+        </div>
+        <div class="galeria-item">
+            <img src="images/oriento-gy_DN08336U-unsplash.jpg" alt="Plato 4">
+        </div>
+        <div class="galeria-item">
+            <img src="images/kawe-rodrigues-vyo_t8CSzls-unsplash.jpg" alt="Plato 5">
+        </div>
+        <div class="galeria-item">
+            <img src="images/daniel-tellez-giron-ZOINPNtpvGI-unsplash.jpg" alt="Plato 6">
+        </div>
+        <div class="galeria-item">
+            <img src="images/cloris-ying-aZqfzi_5lsk-unsplash.jpg" alt="Plato 7">
+        </div>
+        <div class="galeria-item">
+            <img src="images/yoshiki-yokoyama-L6xEY1-po6c-unsplash.jpg" alt="Plato 8">
+        </div>
+    </div>
+    <div class="popup">
+        <span class="close-popup">&times;</span>
+        <img src="" alt="Imagen Popup">
+    </div>
+</div>
+
+
+
+<div class="apartado-reservacion">
+
+    <div class="horario">
+
+        <p>ABIERTO DE LUNES A DOMINGO</p>
+        <p>de 10:00am a 10:00pm</p>
+        <p>Ven y conócenos</p>
+        <p>A través de nuestro servicio en mesa, te llevaremos del gusto a la relajación en un ambiente casual y propositivo, desde su conceptual salón hasta su amplia terraza.</p>
+    </div>
+
+    <a href="./reservacion.html" class="button-reservacion">Reservar</a>
+
+
+    <!-- <button class="button-reservacion">Reserve ahora</button> -->
+
+</div>
+
+<p class="contenido-1">Nuestra gastronomía</p>
+<p class="contenido-2">Comida japonesa contemporánea que fusiona recetas tradicionales con ingredientes occidentales y vanguardistas.</p>
+
+
+<div class="menu">
+    <p class="t-menu">MENU</p>
+        <div class="platillos">
+     
+        
+        </div>
+    </div>
+    
+    
+
+
+
+ <div class="carrito">
+        <h1>tu carrito</h1>
+        <img class="close icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAAB5UlEQVR4nO2dPXLCMBQG35n8FeZm0JEyl03GN1Aae4YhQLADfj/arSnQrjQ2sgabAQAAAAAAAAAAQDpOZjZafcZ5rKH4MLNmZpOZHawuMrPveayfFkx+Kx5BF/JblAjX8qtG0A357hHuya8WQQ/ku0U4/fGFLiNkvjCP8xieGeuuF+bBzL5WRDgUnfnNc6JVjqDo8itHUBb5FSMom/xKEZRVfoUIyi4/cwRVkZ8xgqrJzxRBVeVniKDq8iNHUC/yI0ZQb/IjRVCv8iNEUO/yPSMI+X4RhHy/CEK+XwQh3y+CkO8XQcj3iyDk+0UQ8v0iCPl+Z3GmlZ8t+wvXcyU05MeOMDHz/SJMyPdbCRPy/SJMyH8tWnGruWbbAt4gnwgB5DdWgr/8RgR/+Y0I6xnZivBDGzbWIhx5KYH+satJBEf5C0TYiF64n08ER/kLRHgSvfFJFhEc5S8Q4Q57PsMduEX1k79AhBnP0wtD7yshwtGRodcIEeR3GyGS/O4iRJTfTYTI8stHyCC/bIRM8stFyCi/TITM8tNHqCA/bYRK8tNFqCg/TYTK8lNE4K+L7VeE3d8pcCw687eshLM5cSwu/5kIbvLvRagm/1EEd/nXEarKvxUhjPwFXuIDAAAAAAAAAAAAFpYfaDRgQW8B0IsAAAAASUVORK5CYII=">
+
+
+
+    <div class="items-carrito">
+
+       
+        </div>
+
+        <div class="total">
+            <div>
+                <span>Total:</span>
+                <span>$0</span>
+
+            </div>
+          <button class="pagar">pagar</button>
+
+        </div>
+    </div>
+</div>
+
+
+
+<div class="linea"></div>
+
+
+  <!-- Sección de localización -->
+  <div class="localizacion">
+    <h2>¡Visítanos en nuestra ubicación!</h2>
+    <p>Dirección: Av. Central 123, Colonia Centro, Ciudad de México</p>
+    <!-- Mapa de Google Maps embebido -->
+    <div class="mapa">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.0459227951566!2d-99.13320808466697!3d19.432607486876747!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1f92df0ecdfc1%3A0x6848a25efc892bd9!2sCiudad%20de%20M%C3%A9xico%2C%20CDMX%2C%20M%C3%A9xico!5e0!3m2!1ses!2sus!4v1634239471472!5m2!1ses!2sus" 
+            width="600" 
+            height="450" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy">
+        </iframe>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<footer id="footer">
+
+<div class="socialMedia">
+
+    <svg xmlns="http://www.w3.org/2000/svg" height="25" width="24.75" viewBox="0 0 448 512"><path fill="#ddd" d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64h98.2V334.2H109.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H255V480H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" height="25" width="24.75" viewBox="0 0 448 512"><path fill="#ddd" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" height="25" width="24.75" viewBox="0 0 448 512"><path fill="#ddd" d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm297.1 84L257.3 234.6 379.4 396H283.8L209 298.1 123.3 396H75.8l111-126.9L69.7 116h98l67.7 89.5L313.6 116h47.5zM323.3 367.6L153.4 142.9H125.1L296.9 367.6h26.3z"/></svg>  
+</div>
+<div class="al">
+
+    <a href="" class="be bf g1 dj b1 bd al pi">Política de privacidad</a>
+    <a href="" class="be bf g1 dj b1 bd al pi">Términos</a>
+    <a href="" class="be bf g1 dj b1 bd al pi">Tarifas</a>
+    <a href="" class="be bf g1 dj b1 bd al pi">No vender ni compartir mi información personal</a>
+</div>
+    <div class="al"><div class="pk"></div>
+        <div class="al">
+        <div class="be bf g1 dj b1">reCAPTCHA y Google protegen este sitio. Se aplican la <a rel="nofollow" href="" class="be bf g1 dj b1 pi">Política de privacidad</a> y los <a rel="nofollow" href="" class="be bf g1 dj b1 pi">Términos del servicio</a>.</div>
+        <div class="spacer _40"></div><div dir="ltr" class="be bf g1 dj b1">© 2024 Sushi Willy Inc.</div></div></div></div>
+            </footer>
+
+
+
+
+<script src="script.js"></script>
+
+</body>
+</html>

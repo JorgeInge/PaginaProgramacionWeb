@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administración de Pedidos</title>
+    <style>
+
+body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+        .container {
+            width: 70%;
+            max-width: 1200px;
+            margin: 20px auto;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+
+        .containerA {
+            width: 50%;
+      text-align: center;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    h1 {
+      color: #333;
+    }
+    p {
+      color: #555;
+    }
+    a {
+      text-decoration: none;
+      color: white;
+      background: #007bff;
+      padding: 10px 15px;
+      border-radius: 5px;
+    }
+    a:hover {
+      background: #0056b3;
+    }
+
+        h1, h2 {
+            text-align: center;
+            color: #111;
+        }
+
+        .usuario-info, .pedidos-info {
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table th, table td {
+            text-align: left;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: #ec0e0e;
+            color: white;
+            font-weight: bold;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        select {
+            padding: 5px;
+            border-radius: 4px;
+          
+        }
+
+        .button {
+            background-color: #121213;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #f4f7f9;
+            color: black;
+        }
+
+        /* Popup Styles */
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s, opacity 0.3s;
+        }
+
+        .popup-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .popup.visible {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        #close-popup, .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 50px;
+            cursor: pointer;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .close-btn {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Información del Usuario y Sus Pedidos</h1>
+
+        <!-- Información del Usuario -->
+        <div class="usuario-info">
+            <h2>Detalles del Usuario</h2>
+            <p><strong>Nombre:</strong> <span id="nombre-usuario"></span></p>
+            <p><strong>Correo:</strong> <span id="correo-usuario"></span></p>
+        </div>
+
+        <!-- Información de los Pedidos -->
+        <div class="pedidos-info">
+            <h2>Pedidos del Usuario</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID Pedido</th>
+                        <th>Fecha del Pedido</th>
+                        <th>Estado</th>
+                        <th>Detalles de pedido</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla-pedidos">
+                    <!-- Los pedidos se llenarán aquí -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Popup para detalles -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span id="close-popup">&times;</span>
+            <h2>Detalles del Pedido</h2>
+            <p id="detalle-pedido"></p>
+           
+        </div>
+    </div>
+
+    <script>
+        const datosGuardados = JSON.parse(localStorage.getItem('datosUsuario'));
+        if (datosGuardados) {
+            fetch(`/${datosGuardados.Id}/getAll_pedidos`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' }
+            })
+            .then(response => response.json())
+            .then(data => {
+                const usuario = {
+                    nombre: datosGuardados?.name || 'Nombre predeterminado',
+                    correo: datosGuardados?.Email || 'correo@predeterminado.com',
+                    pedidos: data
+                };
+
+                document.getElementById('nombre-usuario').textContent = usuario.nombre;
+                document.getElementById('correo-usuario').textContent = usuario.correo;
+
+                const tablaPedidos = document.getElementById('tabla-pedidos');
+
+                usuario.pedidos.forEach(pedido => {
+                    const row = document.createElement('tr');
+
+                    const cellId = document.createElement('td');
+                    cellId.textContent = pedido.platillos[0].id_pedido;
+
+                    const cellFecha = document.createElement('td');
+                    cellFecha.textContent = pedido.fecha_pedido?.split("T")[0];
+
+                    const cellEstado = document.createElement('td');
+                    const selectEstado = document.createElement('select');
+                    const estados = ['pendiente', 'en_proceso', 'entregado', 'cancelado'];
+                    estados.forEach(estado => {
+                        const option = document.createElement('option');
+                        option.value = estado;
+                        option.textContent = estado.charAt(0).toUpperCase() + estado.slice(1);
+                        if (pedido.estado === estado) option.selected = true;
+                        selectEstado.appendChild(option);
+                    });
+                    selectEstado.addEventListener('change', event => {
+                        fetch(`/ChangeStatus`, {
+                            method: 'PUT',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                idUser: datosGuardados.Id,
+                                IdPedido: pedido.id_pedido,
+                                status: event.target.value
+                            })
+                        })
+                        .then(response => response.json())
+                        .then(data => alert(data.message));
+                    });
+                    cellEstado.appendChild(selectEstado);
+
+
+                    const cellDetalles = document.createElement('td');
+                    const buttonDetalles = document.createElement('button');
+                    buttonDetalles.textContent = 'Ver Detalles';
+                    buttonDetalles.className = 'button';
+                    buttonDetalles.addEventListener('click', () => {
+                        document.getElementById('detalle-pedido').textContent =
+                            `Pedido #${pedido.platillos[0].id_pedido} - Platillos: ${pedido.platillos
+                                ?.map(p => `${p.nombre} (x${p.cantidad})`)
+                                .join(', ') || 'Sin platillos registrados'}`;
+                        document.getElementById('popup').classList.add('visible');
+                    });
+                    cellDetalles.appendChild(buttonDetalles);
+
+                    row.appendChild(cellId);
+                    row.appendChild(cellFecha);
+                    row.appendChild(cellEstado);
+                    row.appendChild(cellDetalles);
+                    tablaPedidos.appendChild(row);
+                });
+            });
+        } else {
+            document.body.innerHTML = `
+               <div class="containerA">
+    <h1>¡Bienvenido!</h1>
+    <p>Para acceder al contenido, por favor inicia sesión.</p>
+    <a href="./inicioSesion.html">Iniciar sesión</a>
+  </div>
+            `;
+        }
+
+         // Popup functionality
+         const popup = document.getElementById('popup');
+        const closePopup = document.getElementById('close-popup');
+        const closeButton = document.getElementById('close-btn');
+
+        closePopup.addEventListener('click', () => {
+            popup.classList.remove('visible');
+        });
+
+        closeButton.addEventListener('click', () => {
+            popup.classList.remove('visible');
+        });
+    </script>
+</body>
+</html>
